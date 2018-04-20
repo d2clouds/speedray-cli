@@ -1,11 +1,11 @@
 {
-  "name": "@angular/cli",
+  "name": "@speedray/cli",
   "version": "1.7.3",
-  "description": "CLI tool for Angular",
-  "main": "packages/@angular/cli/lib/cli/index.js",
-  "trackingCode": "UA-8594346-19",
+  "description": "CLI tool for Angular on Liferay DXP",
+  "main": "packages/@speedray/cli/lib/cli/index.js",
+  "trackingCode": "UA-35681162-1",
   "bin": {
-    "ng": "./bin/ng"
+    "ng": "./bin/sr"
   },
   "keywords": [],
   "scripts": {
@@ -28,19 +28,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/angular/angular-cli.git"
+    "url": "https://github.com/d2clouds/speedray-cli.git"
   },
   "engines": {
     "node": ">= 6.9.0",
     "npm": ">= 3.0.0"
   },
-  "author": "Angular Authors",
+  "author": "D2Clouds Authors and Angular Authors",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/angular/angular-cli/issues"
+    "url": "https://github.com/d2clouds/speedray-cli/issues"
   },
-  "homepage": "https://github.com/angular/angular-cli",
+  "homepage": "https://github.com/d2clouds/speedray-cli",
   "dependencies": {
+    "@angular/cli": "1.7.3",
+    "@ngtools/logger": "1.1.2",
     "@angular-devkit/build-optimizer": "0.3.2",
     "@angular-devkit/core": "0.3.2",
     "@angular-devkit/schematics": "0.3.2",

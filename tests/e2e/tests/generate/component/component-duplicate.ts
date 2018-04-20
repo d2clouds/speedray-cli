@@ -1,8 +1,8 @@
-import { ng } from '../../../utils/process';
+import { sr } from '../../../utils/process';
 import { oneLine } from 'common-tags';
 
 export default function () {
-  return ng('generate', 'component', 'test-component')
+  return sr('generate', 'component', 'test-component')
     .then((output) => {
       if (!output.stdout.match(/update src[\\|\/]app[\\|\/]app.module.ts/)) {
         throw new Error(oneLine`
@@ -11,7 +11,7 @@ export default function () {
           in ${output.stdout}.`);
       }
     })
-    .then(() => ng('generate', 'component', 'test-component'))
+    .then(() => sr('generate', 'component', 'test-component'))
     .then((output) => {
       if (!output.stdout.match(/error! src[\\|\/]app[\\|\/]test-component[\\|\/]test-component.component.ts already exists./)) {
         throw new Error(oneLine`

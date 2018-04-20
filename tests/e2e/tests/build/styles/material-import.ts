@@ -2,7 +2,7 @@ import {
   writeMultipleFiles,
   replaceInFile
 } from '../../../utils/fs';
-import { ng, silentNpm } from '../../../utils/process';
+import { sr, silentNpm } from '../../../utils/process';
 import { stripIndents } from 'common-tags';
 import { updateJsonFile } from '../../../utils/project';
 
@@ -29,7 +29,7 @@ export default function () {
         .then(() => replaceInFile('src/app/app.component.ts',
           './app.component.css', `./app.component.${ext}`))
         // run build app
-        .then(() => ng('build', '--extract-css', '--sourcemap'))
+        .then(() => sr('build', '--extract-css', '--sourcemap'))
         .then(() => writeMultipleFiles({
           [`src/styles.${ext}`]: stripIndents`
             @import "@angular/material/prebuilt-themes/indigo-pink.css";
@@ -38,7 +38,7 @@ export default function () {
             @import "@angular/material/prebuilt-themes/indigo-pink.css";
           `,
         }))
-        .then(() => ng('build', '--extract-css'));
+        .then(() => sr('build', '--extract-css'));
     });
   });
 

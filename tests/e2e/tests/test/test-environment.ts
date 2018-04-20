@@ -1,4 +1,4 @@
-import { ng } from '../../utils/process';
+import { sr } from '../../utils/process';
 import { writeFile } from '../../utils/fs';
 
 export default function () {
@@ -12,7 +12,7 @@ export default function () {
         });
       });
     `)
-    .then(() => ng('test', '--single-run'))
+    .then(() => sr('test', '--single-run'))
 
     // Tests can run in different environment.
     .then(() => writeFile('src/app/environment.spec.ts', `
@@ -24,5 +24,5 @@ export default function () {
         });
       });
     `))
-    .then(() => ng('test', '-e', 'prod', '--single-run'));
+    .then(() => sr('test', '-e', 'prod', '--single-run'));
 }

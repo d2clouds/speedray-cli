@@ -18,7 +18,7 @@ export default function() {
   }
 
 
-  return execAndWaitForOutputToMatch('ng', ['serve'], webpackGoodRegEx)
+  return execAndWaitForOutputToMatch('sr', ['serve'], webpackGoodRegEx)
     // Should trigger a rebuild.
     .then(() => appendToFile('src/app/app.component.css', ':host { color: blue; }'))
     .then(() => waitForAnyProcessOutputToMatch(webpackGoodRegEx, 10000))

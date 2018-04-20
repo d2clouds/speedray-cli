@@ -129,7 +129,7 @@ function main() {
   console.log(green('Copying cli-builds dist'));
   cliBuildsExec.git('checkout', '-B', branchName);
   cliBuildsExec.rm('-rf', ...cliBuildsExec.glob('*'));
-  cliExec.cp('dist/@angular/cli', cliBuildsRoot);
+  cliExec.cp('dist/@speedray/cli', cliBuildsRoot);
 
   console.log(green('Updating package.json version'));
   cliBuildsExec.updateVersion(hash);

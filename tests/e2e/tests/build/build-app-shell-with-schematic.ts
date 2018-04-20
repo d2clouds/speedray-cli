@@ -1,4 +1,4 @@
-import { ng, npm } from '../../utils/process';
+import { sr, npm } from '../../utils/process';
 import { expectFileToMatch, appendToFile } from '../../utils/fs';
 import { getGlobalVariable } from '../../utils/env';
 import { expectToFail } from '../../utils/utils';
@@ -26,17 +26,17 @@ export default function () {
 
   return Promise.resolve()
     .then(() => expectToFail(() => {
-      return ng('generate', 'appShell', '--universal-app', 'universal');
+      return sr('generate', 'appShell', '--universal-app', 'universal');
     })
     .then(() => appendToFile('src/app/app.component.html', '<router-outlet></router-outlet>'))
-    .then(() => ng('generate', 'appShell', '--universal-app', 'universal'))
+    .then(() => sr('generate', 'appShell', '--universal-app', 'universal'))
     .then(() => updateJsonFile('package.json', packageJson => {
       const dependencies = packageJson['dependencies'];
       dependencies['@angular/platform-server'] = platformServerVersion;
     })
     .then(() => npm('install'))
-    .then(() => ng('build', '--prod'))
+    .then(() => sr('build', '--prod'))
     .then(() => expectFileToMatch('dist/index.html', /app-shell works!/))
-    .then(() => ng('build', '--prod', '--skip-app-shell'))
+    .then(() => sr('build', '--prod', '--skip-app-shell'))
     .then(() => expectToFail(() => expectFileToMatch('dist/index.html', /app-shell works!/)));
 }

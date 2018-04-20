@@ -2,7 +2,7 @@ import {
   writeMultipleFiles,
   expectFileToMatch
 } from '../../utils/fs';
-import { ng } from '../../utils/process';
+import { sr } from '../../utils/process';
 import { updateJsonFile } from '../../utils/project';
 import { oneLineTrim } from 'common-tags';
 
@@ -24,7 +24,7 @@ export default function () {
         { input: 'pre-rename-lazy-style.css', output: 'renamed-lazy-style', lazy: true }
       ];
     }))
-    .then(() => ng('build', '--extract-css'))
+    .then(() => sr('build', '--extract-css'))
     // files were created successfully
     .then(() => expectFileToMatch('dist/styles.bundle.css', '.string-style'))
     .then(() => expectFileToMatch('dist/styles.bundle.css', '.input-style'))

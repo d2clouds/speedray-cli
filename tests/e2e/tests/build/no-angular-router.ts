@@ -1,4 +1,4 @@
-import {ng} from '../../utils/process';
+import {sr} from '../../utils/process';
 import {expectFileToExist, moveFile} from '../../utils/fs';
 import {getGlobalVariable} from '../../utils/env';
 import * as path from 'path';
@@ -9,7 +9,7 @@ export default function() {
 
   return Promise.resolve()
     .then(() => moveFile('node_modules/@angular/router', path.join(tmp, '@angular-router.backup')))
-    .then(() => ng('build'))
+    .then(() => sr('build'))
     .then(() => expectFileToExist('./dist/index.html'))
     .then(() => moveFile(path.join(tmp, '@angular-router.backup'), 'node_modules/@angular/router'));
 }

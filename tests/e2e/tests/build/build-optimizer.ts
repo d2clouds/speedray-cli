@@ -1,11 +1,11 @@
-import { ng } from '../../utils/process';
+import { sr } from '../../utils/process';
 import { expectFileToMatch, expectFileToExist } from '../../utils/fs';
 import { expectToFail } from '../../utils/utils';
 import { getGlobalVariable } from '../../utils/env';
 
 
 export default function () {
-  return ng('build', '--aot', '--build-optimizer')
+  return sr('build', '--aot', '--build-optimizer')
     .then(() => expectToFail(() => expectFileToExist('dist/vendor.js')))
     .then(() => expectToFail(() => expectFileToMatch('dist/main.js', /\.decorators =/)))
     .then(() => {
@@ -16,7 +16,7 @@ export default function () {
 
       // Check if build optimizer is on by default in ng5 prod builds
       return Promise.resolve()
-        .then(() => ng('build', '--prod'))
+        .then(() => sr('build', '--prod'))
         .then(() => expectToFail(() => expectFileToExist('dist/vendor.js')))
         .then(() => expectToFail(() => expectFileToMatch('dist/main.js', /\.decorators =/)));
     });

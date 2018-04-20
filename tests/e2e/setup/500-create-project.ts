@@ -1,5 +1,5 @@
 import {join} from 'path';
-import {git, ng, silentNpm} from '../utils/process';
+import {git, sr, silentNpm} from '../utils/process';
 import {expectFileToExist, replaceInFile} from '../utils/fs';
 import {
   updateTsConfig,
@@ -34,7 +34,7 @@ export default function() {
   } else {
     // Otherwise create a project from scratch.
     createProject = Promise.resolve()
-      .then(() => ng('new', 'test-project', '--skip-install'))
+      .then(() => sr('new', 'test-project', '--skip-install'))
       .then(() => expectFileToExist(join(process.cwd(), 'test-project')))
       .then(() => process.chdir('./test-project'));
   }
@@ -47,7 +47,7 @@ export default function() {
     .then(() => useCIDefaults())
     .then(() => argv['ng2'] ? useNg2() : Promise.resolve())
     .then(() => argv['ng4'] ? useNg4() : Promise.resolve())
-    .then(() => argv.nightly || argv['ng-sha'] ? useSha() : Promise.resolve())
+    .then(() => argv.nightly || argv['sr-sha'] ? useSha() : Promise.resolve())
     // npm link on Circle CI is very noisy.
     .then(() => silentNpm('install'))
     // Force sourcemaps to be from the root of the filesystem.

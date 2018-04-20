@@ -1,4 +1,4 @@
-import { ng } from '../../utils/process';
+import { sr } from '../../utils/process';
 import { expectFileToMatch, rimraf } from '../../utils/fs';
 import { getGlobalVariable } from '../../utils/env';
 import { expectToFail } from '../../utils/utils';
@@ -13,13 +13,13 @@ export default function () {
   // These tests should be moved to the default when we use ng5 in new projects.
   return Promise.resolve()
     // tests for register_locale_data transformer
-    .then(() => ng('build', '--aot', '--locale=fr'))
+    .then(() => sr('build', '--aot', '--locale=fr'))
     .then(() => expectFileToMatch('dist/main.bundle.js', /registerLocaleData/))
     .then(() => expectFileToMatch('dist/main.bundle.js', /angular_common_locales_fr/))
     .then(() => rimraf('dist'))
-    .then(() => ng('build', '--aot', '--locale=fr_FR'))
+    .then(() => sr('build', '--aot', '--locale=fr_FR'))
     .then(() => expectFileToMatch('dist/main.bundle.js', /registerLocaleData/))
     .then(() => expectFileToMatch('dist/main.bundle.js', /angular_common_locales_fr/))
     .then(() => rimraf('dist'))
-    .then(() => expectToFail(() => ng('build', '--aot', '--locale=no-locale')));
+    .then(() => expectToFail(() => sr('build', '--aot', '--locale=no-locale')));
 }

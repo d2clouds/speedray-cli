@@ -5,7 +5,7 @@ import {
   LogEntry,
   IndentLogger,
   NullLogger
-} from '../packages/@ngtools/logger/src/index';
+} from '@ngtools/logger/src/index';
 import {blue, bold, green, red, yellow, white} from 'chalk';
 import {gitClean} from './e2e/utils/git';
 import * as glob from 'glob';
@@ -27,8 +27,8 @@ Error.stackTraceLimit = Infinity;
  *   --nobuild        Skip building the packages. Use with --noglobal and --reuse to quickly
  *                    rerun tests.
  *   --noglobal       Skip linking your local @angular/cli directory. Can save a few seconds.
- *   --nosilent       Never silence ng commands.
- *   --ng-sha=SHA     Use a specific ng-sha. Similar to nightly but point to a master SHA instead
+ *   --nosilent       Never silence sr commands.
+ *   --sr-sha=SHA     Use a specific sr-sha. Similar to nightly but point to a master SHA instead
  *                    of using the latest.
  *   --glob           Run tests matching this glob pattern (relative to tests/e2e/).
  *   --ignore         Ignore tests matching this glob pattern.
@@ -54,7 +54,7 @@ const argv = minimist(process.argv.slice(2), {
     'noproject',
     'verbose',
   ],
-  'string': ['devkit', 'glob', 'ignore', 'reuse', 'ng-sha', 'tmpdir'],
+  'string': ['devkit', 'glob', 'ignore', 'reuse', 'sr-sha', 'tmpdir'],
   'number': ['nb-shards', 'shard']
 });
 

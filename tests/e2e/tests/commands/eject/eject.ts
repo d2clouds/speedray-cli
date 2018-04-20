@@ -1,17 +1,17 @@
 import * as path from 'path';
 import { expectFileToMatch, readFile } from '../../../utils/fs';
 
-import {ng, silentNpm, exec} from '../../../utils/process';
+import {sr, silentNpm, exec} from '../../../utils/process';
 import {expectToFail} from '../../../utils/utils';
 import {expectGitToBeClean} from '../../../utils/git';
 
 
 export default function() {
-  return ng('eject')
-    .then(() => expectToFail(() => ng('build')))
-    .then(() => expectToFail(() => ng('test')))
-    .then(() => expectToFail(() => ng('e2e')))
-    .then(() => expectToFail(() => ng('serve')))
+  return sr('eject')
+    .then(() => expectToFail(() => sr('build')))
+    .then(() => expectToFail(() => sr('test')))
+    .then(() => expectToFail(() => sr('e2e')))
+    .then(() => expectToFail(() => sr('serve')))
     .then(() => expectToFail(() => expectGitToBeClean()))
 
     // Check that no path appears anymore.

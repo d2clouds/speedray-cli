@@ -1,7 +1,7 @@
-# ng generate guard
+# sr generate guard
 
 ## Overview
-`ng generate guard [name]` generates a guard
+`sr generate guard [name]` generates a guard
 
 ## Options
 <details>

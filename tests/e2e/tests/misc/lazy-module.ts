@@ -1,16 +1,16 @@
 import {readdirSync} from 'fs';
 
-import {ng, silentNpm} from '../../utils/process';
+import {sr, silentNpm} from '../../utils/process';
 import {appendToFile, writeFile, prependToFile, replaceInFile} from '../../utils/fs';
 
 
 export default function() {
   let oldNumberOfFiles = 0;
   return Promise.resolve()
-    .then(() => ng('build'))
+    .then(() => sr('build'))
     .then(() => oldNumberOfFiles = readdirSync('dist').length)
-    .then(() => ng('generate', 'module', 'lazy', '--routing'))
-    .then(() => ng('generate', 'module', 'too/lazy', '--routing'))
+    .then(() => sr('generate', 'module', 'lazy', '--routing'))
+    .then(() => sr('generate', 'module', 'too/lazy', '--routing'))
     .then(() => prependToFile('src/app/app.module.ts', `
       import { RouterModule } from '@angular/router';
     `))
@@ -19,7 +19,7 @@ export default function() {
       RouterModule.forRoot([{ path: "lazy1", loadChildren: "./lazy/lazy.module#LazyModule" }]),
       RouterModule.forRoot([{ path: "lazy2", loadChildren: "./too/lazy/lazy.module#LazyModule" }]),
     `))
-    .then(() => ng('build', '--named-chunks'))
+    .then(() => sr('build', '--named-chunks'))
     .then(() => readdirSync('dist'))
     .then((distFiles) => {
       const currentNumberOfDistFiles = distFiles.length;
@@ -43,7 +43,7 @@ export default function() {
       const lazyFile = 'file';
       System.import('./lazy-' + lazyFile);
     `))
-    .then(() => ng('build', '--named-chunks'))
+    .then(() => sr('build', '--named-chunks'))
     .then(() => readdirSync('dist'))
     .then((distFiles) => {
       const currentNumberOfDistFiles = distFiles.length;
@@ -61,14 +61,14 @@ export default function() {
       import * as moment from 'moment';
       console.log(moment);
     `))
-    .then(() => ng('build'))
+    .then(() => sr('build'))
     .then(() => readdirSync('dist').length)
     .then(currentNumberOfDistFiles => {
       if (oldNumberOfFiles != currentNumberOfDistFiles) {
         throw new Error('Bundles were not created after adding \'import *\'.');
       }
     })
-    .then(() => ng('build', '--no-named-chunks'))
+    .then(() => sr('build', '--no-named-chunks'))
     .then(() => readdirSync('dist'))
     .then((distFiles) => {
       if (distFiles.includes('lazy.module.chunk.js')
@@ -79,7 +79,7 @@ export default function() {
       }
     })
     // Check for AoT and lazy routes.
-    .then(() => ng('build', '--aot'))
+    .then(() => sr('build', '--aot'))
     .then(() => readdirSync('dist').length)
     .then(currentNumberOfDistFiles => {
       if (oldNumberOfFiles != currentNumberOfDistFiles) {

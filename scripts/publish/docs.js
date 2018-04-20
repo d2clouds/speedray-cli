@@ -9,7 +9,7 @@ const temp = require('temp');
 const version = require('../../package.json').version;
 
 const documentationPath = path.join(__dirname, '../../docs/documentation');
-const outputPath = temp.mkdirSync('angular-cli-docs');
+const outputPath = temp.mkdirSync('speedray-cli-docs');
 
 
 function execute(command) {
@@ -100,7 +100,7 @@ Promise.resolve()
   .then(() => console.log(`Documentation Path: ${documentationPath}`))
   .then(() => console.log(`Wiki path: ${outputPath}`))
   .then(() => console.log('Cloning...'))
-  .then(() => execute(`git clone "https://github.com/angular/angular-cli.wiki" "${outputPath}"`))
+  .then(() => execute(`git clone "https://github.com/d2clouds/speedray-cli.wiki" "${outputPath}"`))
   .then(() => console.log('Copying Files...'))
   .then(() => createFiles())
   .then(() => process.chdir(outputPath))

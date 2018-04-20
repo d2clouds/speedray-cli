@@ -28,6 +28,6 @@ export default function(skipCleaning: () => void) {
       /var LAZY_MODULE_MAP = { ".\/lazy\.module#LazyModule": /))
     .then(() => exec(normalize('node'), 'index.js'))
     .then(() => expectFileToMatch('dist/index.html',
-      new RegExp('<a ng-reflect-router-link="lazy" href="/lazy">lazy</a>')))
+      new RegExp('<a sr-reflect-router-link="lazy" href="/lazy">lazy</a>')))
     .then(() => skipCleaning());
 }

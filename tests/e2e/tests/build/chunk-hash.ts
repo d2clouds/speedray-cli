@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 
-import {ng} from '../../utils/process';
+import {sr} from '../../utils/process';
 import {writeFile, prependToFile, replaceInFile} from '../../utils/fs';
 
 const OUTPUT_RE = /(main|polyfills|vendor|inline|styles|\d+)\.[a-z0-9]+\.(chunk|bundle)\.(js|css)$/;
@@ -46,7 +46,7 @@ export default function() {
   let newHashes: Map<string, string>;
   // First, collect the hashes.
   return Promise.resolve()
-    .then(() => ng('generate', 'module', 'lazy', '--routing'))
+    .then(() => sr('generate', 'module', 'lazy', '--routing'))
     .then(() => prependToFile('src/app/app.module.ts', `
       import { RouterModule } from '@angular/router';
       import { ReactiveFormsModule } from '@angular/forms';
@@ -55,11 +55,11 @@ export default function() {
       RouterModule.forRoot([{ path: "lazy", loadChildren: "./lazy/lazy.module#LazyModule" }]),
       ReactiveFormsModule,
     `))
-    .then(() => ng('build', '--output-hashing=all'))
+    .then(() => sr('build', '--output-hashing=all'))
     .then(() => {
       oldHashes = generateFileHashMap();
     })
-    .then(() => ng('build', '--output-hashing=all'))
+    .then(() => sr('build', '--output-hashing=all'))
     .then(() => {
       newHashes = generateFileHashMap();
     })
@@ -68,7 +68,7 @@ export default function() {
       oldHashes = newHashes;
     })
     .then(() => writeFile('src/styles.css', 'body { background: blue; }'))
-    .then(() => ng('build', '--output-hashing=all'))
+    .then(() => sr('build', '--output-hashing=all'))
     .then(() => {
       newHashes = generateFileHashMap();
     })
@@ -77,7 +77,7 @@ export default function() {
       oldHashes = newHashes;
     })
     .then(() => writeFile('src/app/app.component.css', 'h1 { margin: 10px; }'))
-    .then(() => ng('build', '--output-hashing=all'))
+    .then(() => sr('build', '--output-hashing=all'))
     .then(() => {
       newHashes = generateFileHashMap();
     })
@@ -92,7 +92,7 @@ export default function() {
       imports: [
          ReactiveFormsModule,
     `))
-    .then(() => ng('build', '--output-hashing=all'))
+    .then(() => sr('build', '--output-hashing=all'))
     .then(() => {
       newHashes = generateFileHashMap();
     })

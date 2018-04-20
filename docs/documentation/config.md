@@ -1,9 +1,9 @@
 <!-- Links in /docs/documentation should NOT have `.md` at the end, because they end up in our wiki at release. -->
 
-# ng get
+# sr get
 
 ## Overview
-`ng get [key]` Get a value from the configuration.
+`sr get [key]` Get a value from the configuration.
 `[key]` should be in JSON path format. Example: `a[3].foo.bar[2]`.
 
 ## Options
@@ -18,10 +18,10 @@
 </details>
 
 
-# ng set
+# sr set
 
 ## Overview
-`ng set [key]=[value]` Set a value in the configuration.
+`sr set [key]=[value]` Set a value in the configuration.
 `[key]` should be in JSON path format. Example: `a[3].foo.bar[2]`.
 
 ## Options

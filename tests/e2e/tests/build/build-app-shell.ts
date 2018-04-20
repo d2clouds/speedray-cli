@@ -1,4 +1,4 @@
-import { ng, npm } from '../../utils/process';
+import { sr, npm } from '../../utils/process';
 import { expectFileToMatch, writeFile } from '../../utils/fs';
 import { getGlobalVariable } from '../../utils/env';
 import { expectToFail } from '../../utils/utils';
@@ -140,8 +140,8 @@ export default function () {
       dependencies['@angular/platform-server'] = platformServerVersion;
     })
     .then(() => npm('install')))
-    .then(() => ng('build', '--prod'))
+    .then(() => sr('build', '--prod'))
     .then(() => expectFileToMatch('dist/index.html', /shell Works!/))
-    .then(() => ng('build', '--prod', '--skip-app-shell'))
+    .then(() => sr('build', '--prod', '--skip-app-shell'))
     .then(() => expectToFail(() => expectFileToMatch('dist/index.html', /shell Works!/)));
 }

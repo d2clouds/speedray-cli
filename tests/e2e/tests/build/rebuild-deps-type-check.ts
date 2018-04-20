@@ -38,7 +38,7 @@ export default function() {
       console.log(funky2('town'));
     `))
     // Should trigger a rebuild, no error expected.
-    .then(() => execAndWaitForOutputToMatch('ng', ['serve'], doneRe))
+    .then(() => execAndWaitForOutputToMatch('sr', ['serve'], doneRe))
     // Make an invalid version of the file.
     // Should trigger a rebuild, this time an error is expected.
     .then(() => Promise.all([

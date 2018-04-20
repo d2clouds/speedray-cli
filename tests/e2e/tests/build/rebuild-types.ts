@@ -22,7 +22,7 @@ export default async function() {
   await prependToFile('src/app/app.component.ts', 'import { MyType } from "./type";\n');
 
   try {
-    await execAndWaitForOutputToMatch('ng', ['serve'], successRe);
+    await execAndWaitForOutputToMatch('sr', ['serve'], successRe);
 
     await Promise.all([
       waitForAnyProcessOutputToMatch(successRe, 20000),

@@ -1,10 +1,10 @@
-import { ng } from '../../utils/process';
+import { sr } from '../../utils/process';
 import { oneLine } from 'common-tags';
 
 export default function () {
   return Promise.resolve()
-    .then(() => ng('set', 'lint', '[]'))
-    .then(() => ng('lint'))
+    .then(() => sr('set', 'lint', '[]'))
+    .then(() => sr('lint'))
     .then(({ stdout }) => {
       if (!stdout.match(/No lint configuration\(s\) found\./)) {
         throw new Error(oneLine`

@@ -1,4 +1,4 @@
-import { ng, silentNpm } from '../../../utils/process';
+import { sr, silentNpm } from '../../../utils/process';
 import {
   expectFileToMatch,
   expectFileToExist,
@@ -39,7 +39,7 @@ export default function () {
       const app = configJson['apps'][0];
       app['styles'] = ['styles.scss'];
     }))
-    .then(() => ng('build', '--extract-css', '--aot'))
+    .then(() => sr('build', '--extract-css', '--aot'))
     .then(({ stdout }) => {
       if (stdout.match(/postcss-url: \.+: Can't read file '\.+', ignoring/)) {
         throw new Error('Expected no postcss-url file read warnings.');

@@ -1,4 +1,4 @@
-import { ng } from '../../utils/process';
+import { sr } from '../../utils/process';
 import { updateJsonFile } from '../../utils/project';
 import { writeFile, appendToFile, readFile, replaceInFile } from '../../utils/fs';
 import { getGlobalVariable } from '../../utils/env';
@@ -37,7 +37,7 @@ export default function () {
     .then(() => updateJsonFile('./src/tsconfig.app.json', configJson => {
       configJson.files = ['main.ts'];
     }))
-    .then(() => expectToFail(() => ng('build')))
+    .then(() => expectToFail(() => sr('build')))
     .then(({ message }) => {
       if (!message.includes('polyfills.ts is missing from the TypeScript compilation')) {
         throw new Error(`Expected missing TS file error, got this instead:\n${message}`);
@@ -52,7 +52,7 @@ export default function () {
     // Check simple single syntax errors.
     // These shouldn't skip emit and just show a TS error.
     .then(() => appendToFile('./src/app/app.component.ts', ']]]'))
-    .then(() => expectToFail(() => ng('build')))
+    .then(() => expectToFail(() => sr('build')))
     .then(({ message }) => {
       if (!message.includes('Declaration or statement expected.')) {
         throw new Error(`Expected syntax error, got this instead:\n${message}`);
@@ -64,7 +64,7 @@ export default function () {
     .then(() => writeFile('./src/app/app.component.ts', origContent))
     // Check errors when files were not emitted due to static analysis errors.
     .then(() => replaceInFile('./src/app/app.component.ts', `'app-root'`, `(() => 'app-root')()`))
-    .then(() => expectToFail(() => ng('build', '--aot')))
+    .then(() => expectToFail(() => sr('build', '--aot')))
     .then(({ message }) => {
       if (!message.includes('Function calls are not supported')
         && !message.includes('Function expressions are not supported in decorators')) {

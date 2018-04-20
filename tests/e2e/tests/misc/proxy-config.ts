@@ -3,7 +3,7 @@ import * as http from 'http';
 
 import {writeFile} from '../../utils/fs';
 import {request} from '../../utils/http';
-import {killAllProcesses, ng} from '../../utils/process';
+import {killAllProcesses, sr} from '../../utils/process';
 import {ngServe} from '../../utils/project';
 import {updateJsonFile} from '../../utils/project';
 import {expectToFail} from "../../utils/utils";
@@ -58,12 +58,12 @@ export default function() {
     .then(() => server.close(), (err) => { server.close(); throw err; })
 
     // A non-existing proxy file should error.
-    .then(() => expectToFail(() => ng('serve', '--proxy-config', 'proxy.non-existent.json')))
+    .then(() => expectToFail(() => sr('serve', '--proxy-config', 'proxy.non-existent.json')))
     .then(() => updateJsonFile('.angular-cli.json', configJson => {
       const app = configJson.defaults;
       app.serve = {
         proxyConfig: 'proxy.non-existent.json'
       };
     }))
-    .then(() => expectToFail(() => ng('serve')));
+    .then(() => expectToFail(() => sr('serve')));
 }

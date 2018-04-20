@@ -5,7 +5,7 @@ import {
   expectFileToMatch,
   expectFileToExist
 } from '../../utils/fs';
-import { ng } from '../../utils/process';
+import { sr } from '../../utils/process';
 import { updateJsonFile } from '../../utils/project';
 import { expectToFail } from '../../utils/utils';
 import {getGlobalVariable} from '../../utils/env';
@@ -38,7 +38,7 @@ export default function () {
         { 'glob': '**/*', 'input': '../node_modules/some-package/', 'output': '../temp' }
       ];
     }))
-    .then(() => expectToFail(() => ng('build')))
+    .then(() => expectToFail(() => sr('build')))
 
     // Set an exception for the invalid asset config in .angular-cli.json.
     .then(() => updateJsonFile('.angular-cli.json', configJson => {
@@ -48,7 +48,7 @@ export default function () {
           'allowOutsideOutDir': true }
       ];
     }))
-    .then(() => ng('build'))
+    .then(() => sr('build'))
 
     // This asset should fail even with the exception above.
     .then(() => updateJsonFile('.angular-cli.json', configJson => {
@@ -58,7 +58,7 @@ export default function () {
           'allowOutsideOutDir': true }
       ];
     }))
-    .then(() => expectToFail(() => ng('build')))
+    .then(() => expectToFail(() => sr('build')))
 
     // This asset will not fail with the exception above.
     .then(() => updateJsonFile('.angular-cli.json', configJson => {
@@ -69,7 +69,7 @@ export default function () {
           'allowOutsideOutDir': true }
       ];
     }))
-    .then(() => ng('build'))
+    .then(() => sr('build'))
     .then(() => updateJsonFile('.angular-cli.json', configJson => {
       const app = configJson['apps'][0];
       app['outDir'] = 'dist';
@@ -82,7 +82,7 @@ export default function () {
         { 'glob': '**/*', 'input': '/temp-folder/outside/of/project', 'output': 'temp' }
       ];
     }))
-    .then(() => expectToFail(() => ng('build')))
+    .then(() => expectToFail(() => sr('build')))
 
     // Add asset config in .angular-cli.json.
     .then(() => updateJsonFile('.angular-cli.json', configJson => {
@@ -96,7 +96,7 @@ export default function () {
       ];
     }))
     // Test files are present on build output.
-    .then(() => ng('build'))
+    .then(() => sr('build'))
     .then(() => expectFileToMatch('./dist/folder/folder-asset.txt', 'folder-asset.txt'))
     .then(() => expectFileToMatch('./dist/string-asset.txt', 'string-asset.txt'))
     .then(() => expectFileToMatch('./dist/glob-asset.txt', 'glob-asset.txt'))
@@ -189,6 +189,6 @@ export default function () {
           });
         });`,
     }))
-    .then(() => !ejected && ng('test', '--single-run'))
-    .then(() => !ejected && ng('e2e'));
+    .then(() => !ejected && sr('test', '--single-run'))
+    .then(() => !ejected && sr('e2e'));
 }

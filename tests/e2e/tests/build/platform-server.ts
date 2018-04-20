@@ -8,7 +8,7 @@ import {
   prependToFile,
   appendToFile,
 } from '../../utils/fs';
-import { ng, silentNpm, exec } from '../../utils/process';
+import { sr, silentNpm, exec } from '../../utils/process';
 import { getGlobalVariable } from '../../utils/env';
 import { readNgVersion } from '../../utils/version';
 import { expectToFail } from '../../utils/utils';
@@ -53,7 +53,7 @@ export default function () {
     .then(() => replaceInFile('./src/app/app.module.ts', /\[\s*BrowserModule/g,
       `[BrowserModule.withServerTransition(\{ appId: 'app' \}), ServerModule`))
     .then(() => silentNpm('install'))
-    .then(() => ng('build', '--aot=false'))
+    .then(() => sr('build', '--aot=false'))
     // files were created successfully
     .then(() => expectFileToMatch('dist/main.bundle.js',
       /exports.*AppModule/))
@@ -74,7 +74,7 @@ export default function () {
     .then(() => exec(normalize('node'), 'index.js'))
     .then(() => expectFileToMatch('dist/index.html',
       new RegExp('<h2 _ngcontent-c0="">Here are some links to help you start: </h2>')))
-    .then(() => ng('build', '--aot'))
+    .then(() => sr('build', '--aot'))
     // files were created successfully
     .then(() => expectFileToMatch('dist/main.bundle.js',
       /exports.*AppModuleNgFactory/))
@@ -102,7 +102,7 @@ export default function () {
         fs.writeFileSync('dist/index.html', html);
       \});
     `)))
-    .then(() => ng('build', '--bundle-dependencies=all', '--aot=false'))
+    .then(() => sr('build', '--bundle-dependencies=all', '--aot=false'))
     .then(() => expectToFail(() => expectFileToMatch('./dist/main.bundle.js',
       /require\(["']@angular\/[^"']*["']\)/)))
     .then(() => exec(normalize('node'), 'dist/main.bundle.js'));

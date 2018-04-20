@@ -1,6 +1,6 @@
 import { createProjectFromAsset } from '../../utils/assets';
 import { replaceInFile } from '../../utils/fs';
-import { ng } from '../../utils/process';
+import { sr } from '../../utils/process';
 
 // This test ensures a project generated with 1.0.0 will still work.
 // Only change it test on major releases.
@@ -28,9 +28,9 @@ export default function () {
         }
       },
       `))
-    .then(() => ng('generate', 'component', 'my-comp'))
-    .then(() => ng('lint'))
-    .then(() => ng('test', '--single-run'))
-    .then(() => ng('e2e'))
-    .then(() => ng('e2e', '--prod'));
+    .then(() => sr('generate', 'component', 'my-comp'))
+    .then(() => sr('lint'))
+    .then(() => sr('test', '--single-run'))
+    .then(() => sr('e2e'))
+    .then(() => sr('e2e', '--prod'));
 }

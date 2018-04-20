@@ -1,5 +1,5 @@
 import { readFile, writeFile, replaceInFile } from './fs';
-import { execAndWaitForOutputToMatch, silentNpm, ng } from './process';
+import { execAndWaitForOutputToMatch, silentNpm, sr } from './process';
 import { getGlobalVariable } from './env';
 
 const packages = require('../../../lib/packages').packages;
@@ -25,7 +25,7 @@ export function updateTsConfig(fn: (json: any) => any | void) {
 
 
 export function ngServe(...args: string[]) {
-  return execAndWaitForOutputToMatch('ng',
+  return execAndWaitForOutputToMatch('sr',
     ['serve', ...args],
     /webpack: bundle is now VALID|webpack: Compiled successfully./);
 }
@@ -36,14 +36,14 @@ export function createProject(name: string, ...args: string[]) {
 
   return Promise.resolve()
     .then(() => process.chdir(getGlobalVariable('tmp-root')))
-    .then(() => ng('new', name, '--skip-install', ...args))
+    .then(() => sr('new', name, '--skip-install', ...args))
     .then(() => process.chdir(name))
     .then(() => useBuiltPackages())
     .then(() => useCIChrome())
     .then(() => useCIDefaults())
     .then(() => argv['ng2'] ? useNg2() : Promise.resolve())
     .then(() => argv['ng4'] ? useNg4() : Promise.resolve())
-    .then(() => argv.nightly || argv['ng-sha'] ? useSha() : Promise.resolve())
+    .then(() => argv.nightly || argv['sr-sha'] ? useSha() : Promise.resolve())
     .then(() => console.log(`Project ${name} created... Installing npm.`))
     .then(() => silentNpm('install'));
 }
@@ -96,8 +96,8 @@ export function useBuiltPackages() {
 
 export function useSha() {
   const argv = getGlobalVariable('argv');
-  if (argv.nightly || argv['ng-sha']) {
-    const label = argv['ng-sha'] ? `#2.0.0-${argv['ng-sha']}` : '';
+  if (argv.nightly || argv['sr-sha']) {
+    const label = argv['sr-sha'] ? `#2.0.0-${argv['sr-sha']}` : '';
     return updateJsonFile('package.json', json => {
       // Install over the project with nightly builds.
       Object.keys(json['dependencies'] || {})
@@ -130,7 +130,7 @@ export function useSha() {
 
 export function useCIDefaults() {
   return updateJsonFile('.angular-cli.json', configJson => {
-    // Auto-add some flags to ng commands that build or test the app.
+    // Auto-add some flags to sr commands that build or test the app.
     // --no-progress disables progress logging, which in CI logs thousands of lines.
     // --no-sourcemaps disables sourcemaps, making builds faster.
     // We add these flags before other args so that they can be overriden.

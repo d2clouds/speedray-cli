@@ -1,6 +1,6 @@
 import {updateTsConfig} from '../../utils/project';
 import {writeMultipleFiles, appendToFile, createDir, replaceInFile} from '../../utils/fs';
-import {ng} from '../../utils/process';
+import {sr} from '../../utils/process';
 import {stripIndents} from 'common-tags';
 
 
@@ -26,7 +26,7 @@ export default function() {
     'src/app/shared/index.ts': `export * from './meaning'`,
   }))
   .then(() => replaceInFile('src/app/app.module.ts', './app.component', '@root/app/app.component'))
-  .then(() => ng('build'))
+  .then(() => sr('build'))
   .then(() => updateTsConfig(json => {
     json['compilerOptions']['paths']['*'] = [
       '*',
@@ -48,5 +48,5 @@ export default function() {
     console.log(meaning4)
     console.log(meaning5)
   `))
-  .then(() => ng('build'));
+  .then(() => sr('build'));
 }

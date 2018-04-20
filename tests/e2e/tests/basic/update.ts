@@ -1,4 +1,4 @@
-import { ng } from '../../utils/process';
+import { sr } from '../../utils/process';
 import { readFile } from '../../utils/fs';
 import { updateJsonFile } from '../../utils/project';
 
@@ -21,7 +21,7 @@ export default function () {
     updateVersions(obj.devDependencies);
     obj.devDependencies['@angular/cli'] = '1.6.5';
     })
-    .then(() => ng('update'))
+    .then(() => sr('update'))
     .then(() => readFile('package.json'))
     .then(s => {
       const obj = JSON.parse(s);

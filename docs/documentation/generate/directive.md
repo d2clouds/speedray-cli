@@ -1,9 +1,9 @@
 <!-- Links in /docs/documentation should NOT have `.md` at the end, because they end up in our wiki at release. -->
 
-# ng generate directive
+# sr generate directive
 
 ## Overview
-`ng generate directive [name]` generates a directive
+`sr generate directive [name]` generates a directive
 
 ## Options
 <details>

@@ -1,6 +1,6 @@
 <!-- Links in /docs/documentation should NOT have `.md` at the end, because they end up in our wiki at release. -->
 
-# Angular CLI Config Schema
+# Speedray CLI Config Schema
 
 ## Options
 
@@ -22,7 +22,7 @@
   - *tsconfig* (`string`): The name of the TypeScript configuration file. Default is `tsconfig.app.json`.
   - *testTsconfig* (`string`): The name of the TypeScript configuration file for unit tests.
   - *prefix* (`string`): The prefix to apply to generated selectors.
-  - *serviceWorker* (`boolean`): Experimental support for a service worker from @angular/service-worker. Default is `false`.
+  - *serviceWorker* (`boolean`): Experimental support for a service worker from @speedray/service-worker. Default is `false`.
   - *showCircularDependencies* (`boolean`): Show circular dependency warnings on builds. Default is `true`.
   - *styles* (`string|array`): Global styles to be included in the build.
   - *stylePreprocessorOptions* : Options to pass to style preprocessors.

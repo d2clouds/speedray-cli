@@ -1,9 +1,9 @@
 <!-- Links in /docs/documentation should NOT have `.md` at the end, because they end up in our wiki at release. -->
 
-# ng generate component
+# sr generate component
 
 ## Overview
-`ng generate component [name]` generates a component
+`sr generate component [name]` generates a component
 
 ## Options
 <details>

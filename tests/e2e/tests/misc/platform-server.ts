@@ -1,4 +1,4 @@
-import { ng } from '../../utils/process';
+import { sr } from '../../utils/process';
 import { updateJsonFile } from '../../utils/project';
 import { expectToFail } from '../../utils/utils';
 
@@ -8,8 +8,8 @@ export default function () {
       const app = configJson['apps'][0];
       app['platform'] = 'server';
     }))
-    .then(() => expectToFail(() => ng('serve')))
-    .then(() => expectToFail(() => ng('test')))
-    .then(() => expectToFail(() => ng('e2e')))
-    .then(() => expectToFail(() => ng('eject')));
+    .then(() => expectToFail(() => sr('serve')))
+    .then(() => expectToFail(() => sr('test')))
+    .then(() => expectToFail(() => sr('e2e')))
+    .then(() => expectToFail(() => sr('eject')));
 }

@@ -4,7 +4,7 @@ import {
   appendToFile,
   expectFileMatchToExist
 } from '../../utils/fs';
-import { ng } from '../../utils/process';
+import { sr } from '../../utils/process';
 import { updateJsonFile } from '../../utils/project';
 import { oneLineTrim } from 'common-tags';
 import * as fs from 'fs';
@@ -41,7 +41,7 @@ export default function () {
         { input: 'pre-rename-lazy-script.js', output: 'renamed-lazy-script', lazy: true }
       ];
     }))
-    .then(() => ng('build', '--extract-css'))
+    .then(() => sr('build', '--extract-css'))
     // files were created successfully
     .then(() => expectFileToMatch('dist/scripts.bundle.js', 'string-script'))
     .then(() => expectFileToMatch('dist/scripts.bundle.js', 'input-script'))
@@ -60,7 +60,7 @@ export default function () {
     // Ensure scripts can be separately imported from the app.
     .then(() => expectFileToMatch('dist/main.bundle.js', 'console.log(\'string-script\');'))
     // Verify uglify, sourcemaps and hashes. Lazy scripts should not get hashes.
-    .then(() => ng('build', '--prod', '--sourcemap'))
+    .then(() => sr('build', '--prod', '--sourcemap'))
     .then(() => expectFileMatchToExist('dist', /scripts\.[0-9a-f]{20}\.bundle\.js/))
     .then(fileName => expectFileToMatch(`dist/${fileName}`, 'var number=2;'))
     .then(() => expectFileMatchToExist('dist', /scripts\.[0-9a-f]{20}\.bundle\.js\.map/))

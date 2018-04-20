@@ -1,6 +1,6 @@
 import * as fs from 'fs-extra';
 import {join} from 'path';
-import {ng} from '../../../utils/process';
+import {sr} from '../../../utils/process';
 import {expectFileToMatch} from '../../../utils/fs';
 
 
@@ -10,15 +10,15 @@ export default function() {
 
   fs.mkdirSync('./src/app/sub-dir');
 
-  return ng('generate', 'service', 'test-service', '--module', 'app.module.ts')
+  return sr('generate', 'service', 'test-service', '--module', 'app.module.ts')
     .then(() => expectFileToMatch(modulePath,
       /import { TestServiceService } from '.\/test-service.service'/))
 
     .then(() => process.chdir(join(root, 'src', 'app')))
-    .then(() => ng('generate', 'service', 'test-service2', '--module', 'app.module.ts'))
+    .then(() => sr('generate', 'service', 'test-service2', '--module', 'app.module.ts'))
     .then(() => expectFileToMatch(modulePath,
       /import { TestService2Service } from '.\/test-service2.service'/))
 
     // Try to run the unit tests.
-    .then(() => ng('build'));
+    .then(() => sr('build'));
 }

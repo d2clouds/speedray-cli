@@ -1,7 +1,7 @@
 import {readdirSync} from 'fs';
 import {oneLine} from 'common-tags';
 
-import {ng, silentNpm} from '../../utils/process';
+import {sr, silentNpm} from '../../utils/process';
 import {appendToFile, expectFileToExist, prependToFile, replaceInFile} from '../../utils/fs';
 import {expectToFail} from '../../utils/utils';
 
@@ -9,10 +9,10 @@ import {expectToFail} from '../../utils/utils';
 export default function() {
   let oldNumberOfFiles = 0;
   return Promise.resolve()
-    .then(() => ng('build'))
+    .then(() => sr('build'))
     .then(() => oldNumberOfFiles = readdirSync('dist').length)
-    .then(() => ng('generate', 'module', 'lazyA', '--routing'))
-    .then(() => ng('generate', 'module', 'lazyB', '--routing'))
+    .then(() => sr('generate', 'module', 'lazyA', '--routing'))
+    .then(() => sr('generate', 'module', 'lazyB', '--routing'))
     .then(() => prependToFile('src/app/app.module.ts', `
       import { RouterModule } from '@angular/router';
     `))
@@ -20,7 +20,7 @@ export default function() {
       RouterModule.forRoot([{ path: "lazyA", loadChildren: "./lazy-a/lazy-a.module#LazyAModule" }]),
       RouterModule.forRoot([{ path: "lazyB", loadChildren: "./lazy-b/lazy-b.module#LazyBModule" }]),
     `))
-    .then(() => ng('build'))
+    .then(() => sr('build'))
     .then(() => readdirSync('dist').length)
     .then(currentNumberOfDistFiles => {
       if (oldNumberOfFiles >= currentNumberOfDistFiles) {
@@ -33,7 +33,7 @@ export default function() {
       import * as moment from 'moment';
       console.log(moment);
     `))
-    .then(() => ng('build'))
+    .then(() => sr('build'))
     .then(() => readdirSync('dist').length)
     .then(currentNumberOfDistFiles => {
       if (oldNumberOfFiles != currentNumberOfDistFiles) {
@@ -44,7 +44,7 @@ export default function() {
       import * as moment from 'moment';
       console.log(moment);
     `))
-    .then(() => ng('build'))
+    .then(() => sr('build'))
     .then(() => expectFileToExist('dist/common.chunk.js'))
     .then(() => readdirSync('dist').length)
     .then(currentNumberOfDistFiles => {
@@ -54,7 +54,7 @@ export default function() {
       }
       oldNumberOfFiles = currentNumberOfDistFiles;
     })
-    .then(() => ng('build', '--no-common-chunk'))
+    .then(() => sr('build', '--no-common-chunk'))
     .then(() => expectToFail(() => expectFileToExist('dist/common.chunk.js')))
     .then(() => readdirSync('dist').length)
     .then(currentNumberOfDistFiles => {
@@ -64,7 +64,7 @@ export default function() {
       }
     })
     // Check for AoT and lazy routes.
-    .then(() => ng('build', '--aot'))
+    .then(() => sr('build', '--aot'))
     .then(() => readdirSync('dist').length)
     .then(currentNumberOfDistFiles => {
       if (oldNumberOfFiles != currentNumberOfDistFiles) {

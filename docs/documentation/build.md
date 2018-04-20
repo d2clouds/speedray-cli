@@ -1,25 +1,25 @@
 <!-- Links in /docs/documentation should NOT have `.md` at the end, because they end up in our wiki at release. -->
 
-# ng build
+# sr build
 
 ## Overview
-`ng build` compiles the application into an output directory
+`sr build` compiles the application into an output directory
 
 ### Creating a build
 
 ```bash
-ng build
+sr build
 ```
 
 The build artifacts will be stored in the `dist/` directory.
 
-All commands that build or serve your project, `ng build/serve/e2e`, will delete the output
+All commands that build or serve your project, `sr build/serve/e2e`, will delete the output
 directory (`dist/` by default).
 This can be disabled via the `--no-delete-output-path` (or `--delete-output-path=false`) flag.
 
 ### Build Targets and Environment Files
 
-`ng build` can specify both a build target (`--target=production` or `--target=development`) and an
+`sr build` can specify both a build target (`--target=production` or `--target=development`) and an
 environment file to be used with that build (`--environment=dev` or `--environment=prod`).
 By default, the development build target and environment are used.
 
@@ -38,14 +38,14 @@ it will default to `dev` for `development` and `prod` for `production`.
 
 ```bash
 # these are equivalent
-ng build --target=production --environment=prod
-ng build --prod --env=prod
-ng build --prod
+sr build --target=production --environment=prod
+sr build --prod --env=prod
+sr build --prod
 # and so are these
-ng build --target=development --environment=dev
-ng build --dev --e=dev
-ng build --dev
-ng build
+sr build --target=development --environment=dev
+sr build --dev --e=dev
+sr build --dev
+sr build
 ```
 
 You can also add your own env files other than `dev` and `prod` by doing the following:
@@ -59,8 +59,8 @@ When building you can modify base tag (`<base href="/">`) in your index.html wit
 
 ```bash
 # Sets base tag href to /myUrl/ in your index.html
-ng build --base-href /myUrl/
-ng build --bh /myUrl/
+sr build --base-href /myUrl/
+sr build --bh /myUrl/
 ```
 
 ### Bundling & Tree-Shaking
@@ -109,8 +109,8 @@ You'll see these resources be outputted and fingerprinted at the root of `dist/`
 There is experimental service worker support for production builds available in the CLI.
 To enable it, run the following commands:
 ```
-npm install @angular/service-worker --save
-ng set apps.0.serviceWorker=true
+npm install @speedray/service-worker --save
+sr set apps.0.serviceWorker=true
 ```
 
 On `--prod` builds a service worker manifest will be created and loaded automatically.
@@ -371,7 +371,7 @@ See https://github.com/angular/angular-cli/issues/7797 for details.
     <code>--build-optimizer</code>
   </p>
   <p>
-    Enables @angular-devkit/build-optimizer optimizations when using `--aot`.
+    Enables @speedray-devkit/build-optimizer optimizations when using `--aot`.
   </p>
 </details>
 

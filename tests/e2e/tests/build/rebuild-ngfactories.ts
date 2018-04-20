@@ -23,7 +23,7 @@ export default function () {
     return Promise.resolve();
   }
 
-  return execAndWaitForOutputToMatch('ng', ['serve', '--aot'], validBundleRegEx)
+  return execAndWaitForOutputToMatch('sr', ['serve', '--aot'], validBundleRegEx)
     .then(() => writeMultipleFiles({
       'src/app/app.component.css': `
         @import './imported-styles.css';

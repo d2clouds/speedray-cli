@@ -1,9 +1,9 @@
 <!-- Links in /docs/documentation should NOT have `.md` at the end, because they end up in our wiki at release. -->
 
-# ng generate pipe
+# sr generate pipe
 
 ## Overview
-`ng generate pipe [name]` generates a pipe
+`sr generate pipe [name]` generates a pipe
 
 ## Options
 <details>

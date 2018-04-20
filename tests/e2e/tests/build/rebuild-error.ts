@@ -40,7 +40,7 @@ export default function () {
     // Add a major static analysis error on a non-main file to the initial build.
     .then(() => replaceInFile('./src/app/app.component.ts', `'app-root'`, `(() => 'app-root')()`))
     // Should have an error.
-    .then(() => execAndWaitForOutputToMatch('ng', ['serve', '--aot'], failedRe))
+    .then(() => execAndWaitForOutputToMatch('sr', ['serve', '--aot'], failedRe))
     .then((results) => {
       const stderr = results.stderr;
       if (!stderr.includes('Function calls are not supported')

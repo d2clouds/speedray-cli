@@ -19,7 +19,7 @@ export default function () {
     return Promise.resolve();
   }
 
-  return execAndWaitForOutputToMatch('ng', ['serve', '--aot'], validBundleRegEx)
+  return execAndWaitForOutputToMatch('sr', ['serve', '--aot'], validBundleRegEx)
     // Wait before editing a file.
     // Editing too soon seems to trigger a rebuild and throw polling/watch out of whack.
     .then(() => wait(2000))

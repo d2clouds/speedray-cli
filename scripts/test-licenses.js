@@ -45,6 +45,7 @@ const licensesWhitelist = [
   'MIT',
   'ISC',
   'Apache-2.0',
+  'LGPL-3.0',
 
   'BSD-2-Clause',
   'BSD-3-Clause',

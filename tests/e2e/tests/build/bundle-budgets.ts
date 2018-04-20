@@ -7,7 +7,7 @@
  */
 
 import { getGlobalVariable } from '../../utils/env';
-import { ng } from '../../utils/process';
+import { sr } from '../../utils/process';
 import { updateJsonFile } from '../../utils/project';
 import { expectToFail } from '../../utils/utils';
 
@@ -35,7 +35,7 @@ export default function () {
     if (cfg.expectation === 'error') {
       return () => {
         return updateJsonFile('.angular-cli.json', (json) => { json.apps[0].budgets = [cfg.budget]; })
-          .then(() => expectToFail(() => ng('build', '--prod')))
+          .then(() => expectToFail(() => sr('build', '--prod')))
           .then(errorMessage => {
             if (!/ERROR in budgets/.test(errorMessage)) {
               throw new Error(cfg.message);
@@ -45,7 +45,7 @@ export default function () {
     } else if (cfg.expectation === 'warning') {
       return () => {
         return updateJsonFile('.angular-cli.json', (json) => { json.apps[0].budgets = [cfg.budget]; })
-          .then(() => ng('build', '--prod'))
+          .then(() => sr('build', '--prod'))
           .then(({ stdout }) => {
             if (!/WARNING in budgets/.test(stdout)) {
               throw new Error(cfg.message);
@@ -55,7 +55,7 @@ export default function () {
     } else { // pass
       return () => {
         return updateJsonFile('.angular-cli.json', (json) => { json.apps[0].budgets = [cfg.budget]; })
-          .then(() => ng('build', '--prod'))
+          .then(() => sr('build', '--prod'))
           .then(({ stdout }) => {
             if (/(WARNING|ERROR)/.test(stdout)) {
               throw new Error(cfg.message);

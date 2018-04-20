@@ -9,8 +9,8 @@ export default function() {
   }
 
   return Promise.resolve()
-    // Check that ng serve has eval sourcemaps by default.
-    .then(() => execAndWaitForOutputToMatch('ng', ['serve'], /webpack: Compiled successfully/))
+    // Check that sr serve has eval sourcemaps by default.
+    .then(() => execAndWaitForOutputToMatch('sr', ['serve'], /webpack: Compiled successfully/))
     .then((output) => {
       const stdout = output.stdout;
       if (/\.js\.map/.test(stdout)) {

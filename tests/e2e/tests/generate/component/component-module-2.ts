@@ -1,6 +1,6 @@
 import * as fs from 'fs-extra';
 import {join} from 'path';
-import {ng} from '../../../utils/process';
+import {sr} from '../../../utils/process';
 import {expectFileToMatch} from '../../../utils/fs';
 
 
@@ -11,12 +11,12 @@ export default function() {
   fs.mkdirSync('./src/app/sub-dir');
 
   return Promise.resolve()
-    .then(() => ng('generate', 'module', 'admin/module'))
-    .then(() => ng('generate', 'component', 'other/test-component', '--module', 'admin/module'))
+    .then(() => sr('generate', 'module', 'admin/module'))
+    .then(() => sr('generate', 'component', 'other/test-component', '--module', 'admin/module'))
     .then(() => expectFileToMatch(modulePath,
       new RegExp(/import { TestComponentComponent } /.source +
                  /from '..\/..\/other\/test-component\/test-component.component'/.source))
 
     // Try to run the unit tests.
-    .then(() => ng('build'));
+    .then(() => sr('build'));
 }

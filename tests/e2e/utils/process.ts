@@ -146,7 +146,7 @@ export function silentExec(cmd: string, ...args: string[]) {
 }
 
 export function execAndWaitForOutputToMatch(cmd: string, args: string[], match: RegExp) {
-  if (cmd === 'ng' && args[0] === 'serve') {
+  if (cmd === 'sr' && args[0] === 'serve') {
     // Accept matches up to 20 times after the initial match.
     // Useful because the Webpack watcher can rebuild a few times due to files changes that
     // happened just before the build (e.g. `git clean`).
@@ -168,13 +168,13 @@ export function execAndWaitForOutputToMatch(cmd: string, args: string[], match: 
 }
 
 let npmInstalledEject = false;
-export function ng(...args: string[]) {
+export function sr(...args: string[]) {
   const argv = getGlobalVariable('argv');
-  const maybeSilentNg = argv['nosilent'] ? noSilentNg : silentNg;
+  const maybeSilentSr = argv['nosilent'] ? noSilentSr : silentSr;
   if (['build', 'serve', 'test', 'e2e', 'xi18n'].indexOf(args[0]) != -1) {
     // If we have the --eject, use webpack for the test.
     if (args[0] == 'build' && argv.eject) {
-      return maybeSilentNg('eject', ...args.slice(1), '--force')
+      return maybeSilentSr('eject', ...args.slice(1), '--force')
         .then(() => {
           if (!npmInstalledEject) {
             npmInstalledEject = true;
@@ -187,21 +187,21 @@ export function ng(...args: string[]) {
     } else if (args[0] == 'e2e') {
       // Wait 1 second before running any end-to-end test.
       return new Promise(resolve => setTimeout(resolve, 1000))
-        .then(() => maybeSilentNg(...args));
+        .then(() => maybeSilentSr(...args));
     }
 
-    return maybeSilentNg(...args);
+    return maybeSilentSr(...args);
   } else {
-    return noSilentNg(...args);
+    return noSilentSr(...args);
   }
 }
 
-export function noSilentNg(...args: string[]) {
-  return _exec({}, 'ng', args);
+export function noSilentSr(...args: string[]) {
+  return _exec({}, 'sr', args);
 }
 
-export function silentNg(...args: string[]) {
-  return _exec({silent: true}, 'ng', args);
+export function silentSr(...args: string[]) {
+  return _exec({silent: true}, 'sr', args);
 }
 
 export function silentNpm(...args: string[]) {

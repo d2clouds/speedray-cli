@@ -1,4 +1,4 @@
-import { ng } from '../../utils/process';
+import { sr } from '../../utils/process';
 import { updateJsonFile } from '../../utils/project';
 
 export default function () {
@@ -10,5 +10,5 @@ export default function () {
       const compilerOptions = configJson['compilerOptions'];
       compilerOptions['target'] = 'es2015';
     }))
-    .then(() => ng('test', '--single-run'));
+    .then(() => sr('test', '--single-run'));
 }

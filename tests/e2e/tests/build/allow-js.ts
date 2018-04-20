@@ -1,4 +1,4 @@
-import { ng } from '../../utils/process';
+import { sr } from '../../utils/process';
 import { updateTsConfig } from '../../utils/project';
 import { appendToFile, writeFile } from '../../utils/fs';
 
@@ -13,6 +13,6 @@ export default async function() {
     json['compilerOptions'].allowJs = true;
   });
 
-  await ng('build');
-  await ng('build', '--aot');
+  await sr('build');
+  await sr('build', '--aot');
 }

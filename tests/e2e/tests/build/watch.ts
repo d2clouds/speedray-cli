@@ -14,7 +14,7 @@ export default function () {
     return Promise.resolve();
   }
 
-  return execAndWaitForOutputToMatch('ng', ['serve'], webpackGoodRegEx)
+  return execAndWaitForOutputToMatch('sr', ['serve'], webpackGoodRegEx)
     // Should trigger a rebuild.
     .then(() => exec('touch', 'src/main.ts'))
     .then(() => waitForAnyProcessOutputToMatch(webpackGoodRegEx, 10000))
@@ -22,7 +22,7 @@ export default function () {
       killAllProcesses();
       throw err;
     })
-    .then(() => execAndWaitForOutputToMatch('ng', ['serve', '--no-watch'], webpackGoodRegEx))
+    .then(() => execAndWaitForOutputToMatch('sr', ['serve', '--no-watch'], webpackGoodRegEx))
     // Should not trigger a rebuild when not watching files.
     .then(() => exec('touch', 'src/main.ts'))
     .then(() => expectToFail(() => waitForAnyProcessOutputToMatch(webpackGoodRegEx, 10000)))

@@ -18,11 +18,7 @@ function removeResolvedKeys(json) {
 
   const deps = json['dependencies'] || {};
   for (const key of Object.keys(deps)) {
-    if (key.startsWith('@angular/')) {
-      delete deps[key];
-    } else if (key.startsWith('@ngtools/')) {
-      delete deps[key];
-    } else if (key.startsWith('@angular-cli/')) {
+    if (key.startsWith('@speedray/')) {
       delete deps[key];
     } else {
       deps[key] = removeResolvedKeys(deps[key]);

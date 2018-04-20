@@ -17,5 +17,5 @@ export default function () {
       // because of https://github.com/sass/node-sass/issues/2006
       return silentNpm('install', '-g', packages['@angular/cli'].tar, '--unsafe-perm');
     })
-    .then(() => exec(process.platform.startsWith('win') ? 'where' : 'which', 'ng'));
+    .then(() => exec(process.platform.startsWith('win') ? 'where' : 'which', 'sr'));
 }

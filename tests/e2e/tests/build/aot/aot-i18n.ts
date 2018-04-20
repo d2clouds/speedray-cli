@@ -1,4 +1,4 @@
-import {ng} from '../../../utils/process';
+import {sr} from '../../../utils/process';
 import {expectFileToMatch, writeFile, createDir, appendToFile, readFile} from '../../../utils/fs';
 import {expectToFail} from '../../../utils/utils';
 import {Version} from '../../../../../packages/@angular/cli/upgrade/version';
@@ -22,10 +22,10 @@ export default function() {
         </xliff>`))
     .then(() => appendToFile('src/app/app.component.html',
       '<h1 i18n="An introduction header for this sample">Hello i18n!</h1>'))
-    .then(() => ng('build', '--aot', '--i18n-file', 'src/locale/messages.fr.xlf', '--i18n-format',
+    .then(() => sr('build', '--aot', '--i18n-file', 'src/locale/messages.fr.xlf', '--i18n-format',
       'xlf', '--locale', 'fr'))
     .then(() => expectFileToMatch('dist/main.bundle.js', /Bonjour i18n!/))
-    .then(() => ng('build', '--aot'))
+    .then(() => sr('build', '--aot'))
     .then(() => expectToFail(() => expectFileToMatch('dist/main.bundle.js', /Bonjour i18n!/)))
     .then(() => expectFileToMatch('dist/main.bundle.js', /Hello i18n!/))
     .then(() => appendToFile('src/app/app.component.html',
@@ -34,10 +34,10 @@ export default function() {
       .then((compilerCliPackage): any => {
         const version = new Version(JSON.parse(compilerCliPackage).version);
         if (version.major === 2) {
-          return expectToFail(() => ng('build', '--aot', '--i18nFile', 'src/locale/messages.fr.xlf',
+          return expectToFail(() => sr('build', '--aot', '--i18nFile', 'src/locale/messages.fr.xlf',
             '--i18nFormat', 'xlf', '--locale', 'fr', '--missingTranslation', 'ignore'));
         } else {
-          return ng('build', '--aot', '--i18nFile', 'src/locale/messages.fr.xlf', '--i18nFormat',
+          return sr('build', '--aot', '--i18nFile', 'src/locale/messages.fr.xlf', '--i18nFormat',
             'xlf', '--locale', 'fr', '--missingTranslation', 'ignore')
             .then(() => expectFileToMatch('dist/main.bundle.js', /Other content/));
         }
@@ -47,10 +47,10 @@ export default function() {
       .then((compilerCliPackage): any => {
         const version = new Version(JSON.parse(compilerCliPackage).version);
         if (version.isGreaterThanOrEqualTo(new SemVer('4.2.0-beta.0')) || version.major === 2) {
-          return expectToFail(() => ng('build', '--aot', '--i18nFile', 'src/locale/messages.fr.xlf',
+          return expectToFail(() => sr('build', '--aot', '--i18nFile', 'src/locale/messages.fr.xlf',
             '--i18nFormat', 'xlf', '--locale', 'fr', '--missingTranslation', 'error'));
         } else {
-          return ng('build', '--aot', '--i18nFile', 'src/locale/messages.fr.xlf',
+          return sr('build', '--aot', '--i18nFile', 'src/locale/messages.fr.xlf',
             '--i18nFormat', 'xlf', '--locale', 'fr', '--missingTranslation', 'error');
         }
       })

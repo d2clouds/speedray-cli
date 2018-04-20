@@ -1,9 +1,9 @@
 <!-- Links in /docs/documentation should NOT have `.md` at the end, because they end up in our wiki at release. -->
 
-# ng xi18n
+# sr xi18n
 
 ## Overview
-`ng xi18n` Extracts i18n messages from the templates.
+`sr xi18n` Extracts i18n messages from the templates.
 
 ## Options
 <details>

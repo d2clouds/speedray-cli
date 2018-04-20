@@ -1,11 +1,11 @@
 <!-- Links in /docs/documentation should NOT have `.md` at the end, because they end up in our wiki at release. -->
 
-# ng eject
+# sr eject
 
 ## Overview
-`ng eject` ejects your app and output the proper webpack configuration and scripts.
+`sr eject` ejects your app and output the proper webpack configuration and scripts.
 
-This command uses the same flags as `ng build`, generating webpack configuration to match those
+This command uses the same flags as `sr build`, generating webpack configuration to match those
 flags.
 
 You can use `--force` to overwrite existing configurations.
@@ -15,7 +15,7 @@ configuration and using the `--force` flag.
 ### Ejecting the CLI
 
 ```bash
-ng eject
+sr eject
 ```
 
 ## Options

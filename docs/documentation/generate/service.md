@@ -1,9 +1,9 @@
 <!-- Links in /docs/documentation should NOT have `.md` at the end, because they end up in our wiki at release. -->
 
-# ng generate service
+# sr generate service
 
 ## Overview
-`ng generate service [name]` generates a service
+`sr generate service [name]` generates a service
 
 ## Options
 <details>

@@ -2,7 +2,7 @@ import {
   killAllProcesses,
   waitForAnyProcessOutputToMatch,
   execAndWaitForOutputToMatch,
-  ng,
+  sr,
 } from '../../utils/process';
 import {writeFile, writeMultipleFiles} from '../../utils/fs';
 import {wait} from '../../utils/utils';
@@ -22,9 +22,9 @@ export default function() {
 
   const lazyChunkRegExp = /lazy\.module\.chunk\.js/g;
 
-  return execAndWaitForOutputToMatch('ng', ['serve'], validBundleRegEx)
+  return execAndWaitForOutputToMatch('sr', ['serve'], validBundleRegEx)
     // Add a lazy module.
-    .then(() => ng('generate', 'module', 'lazy', '--routing'))
+    .then(() => sr('generate', 'module', 'lazy', '--routing'))
     // Should trigger a rebuild with a new bundle.
     // We need to use Promise.all to ensure we are waiting for the rebuild just before we write
     // the file, otherwise rebuilds can be too fast and fail CI.

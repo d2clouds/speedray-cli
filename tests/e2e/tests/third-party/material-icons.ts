@@ -1,4 +1,4 @@
-import {silentNpm, ng} from '../../utils/process';
+import {silentNpm, sr} from '../../utils/process';
 import {updateJsonFile} from '../../utils/project';
 import {expectFileToMatch} from '../../utils/fs';
 
@@ -10,9 +10,9 @@ export default function() {
       const app = configJson['apps'][0];
       app['styles'].push('../node_modules/material-design-icons/iconfont/material-icons.css');
     }))
-    .then(() => ng('build', '--extract-css'))
+    .then(() => sr('build', '--extract-css'))
     .then(() => expectFileToMatch('dist/styles.bundle.css', 'Material Icons'))
-    .then(() => ng(
+    .then(() => sr(
       'build',
       '--prod',
       '--extract-css',

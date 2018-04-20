@@ -1,9 +1,9 @@
 <!-- Links in /docs/documentation should NOT have `.md` at the end, because they end up in our wiki at release. -->
 
-# ng new
+# sr new
 
 ## Overview
-`ng new [name]` creates a new angular application.
+`sr new [name]` creates a new angular application.
 
 Default applications are created in a directory of the same name, with an initialized Angular application.
 
@@ -24,7 +24,7 @@ Default applications are created in a directory of the same name, with an initia
     <code>--dry-run</code> (alias: <code>-d</code>) <em>default value: false</em>
   </p>
   <p>
-    Run through without making any changes. Will list all files that would have been created when running <code>ng new</code>.
+    Run through without making any changes. Will list all files that would have been created when running <code>sr new</code>.
   </p>
 </details>
 

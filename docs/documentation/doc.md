@@ -1,9 +1,9 @@
 <!-- Links in /docs/documentation should NOT have `.md` at the end, because they end up in our wiki at release. -->
 
-# ng doc
+# sr doc
 
 ## Overview
-`ng doc [search term]` Opens the official Angular API documentation for a given keyword on [angular.io](https://angular.io).
+`sr doc [search term]` Opens the official Angular API documentation for a given keyword on [angular.io](https://angular.io).
 
 ## Options
 

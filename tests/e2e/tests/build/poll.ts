@@ -19,7 +19,7 @@ export default function() {
   }
 
 
-  return execAndWaitForOutputToMatch('ng', ['serve', '--poll=10000'], webpackGoodRegEx)
+  return execAndWaitForOutputToMatch('sr', ['serve', '--poll=10000'], webpackGoodRegEx)
     // Wait before editing a file.
     // Editing too soon seems to trigger a rebuild and throw polling out of whack.
     .then(() => wait(3000))

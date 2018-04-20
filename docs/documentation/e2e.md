@@ -1,21 +1,21 @@
 <!-- Links in /docs/documentation should NOT have `.md` at the end, because they end up in our wiki at release. -->
 
-# ng e2e
+# sr e2e
 
 ## Overview
-`ng e2e` serves the application and runs end-to-end tests
+`sr e2e` serves the application and runs end-to-end tests
 
 ### Running end-to-end tests
 
 ```bash
-ng e2e
+sr e2e
 ```
 
 End-to-end tests are run via [Protractor](https://angular.github.io/protractor/).
 
 ## Options
 
-Please note that options that are supported by `ng serve` are also supported by `ng e2e`
+Please note that options that are supported by `sr serve` are also supported by `sr e2e`
 
 <details>
   <summary>config</summary>
@@ -56,7 +56,7 @@ Please note that options that are supported by `ng serve` are also supported by 
     <code>--specs</code> (aliases: <code>-sp</code>) <em>default value: []</em>
   </p>
   <p>
-    Override specs in the protractor config. Can send in multiple specs by repeating flag (<code>ng e2e --specs=spec1.ts --specs=spec2.ts</code>).
+    Override specs in the protractor config. Can send in multiple specs by repeating flag (<code>sr e2e --specs=spec1.ts --specs=spec2.ts</code>).
   </p>
 </details>
 
@@ -66,7 +66,7 @@ Please note that options that are supported by `ng serve` are also supported by 
     <code>--suite</code> (aliases: <code>-su</code>)
   </p>
   <p>
-    Override suite in the protractor config. Can send in multiple suite by comma separated values (<code>ng e2e --suite=suiteA,suiteB</code>).
+    Override suite in the protractor config. Can send in multiple suite by comma separated values (<code>sr e2e --suite=suiteA,suiteB</code>).
   </p>
 </details>
 

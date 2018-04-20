@@ -1,9 +1,9 @@
 <!-- Links in /docs/documentation should NOT have `.md` at the end, because they end up in our wiki at release. -->
 
-# ng lint
+# sr lint
 
 ## Overview
-`ng lint` will lint you app code using tslint.
+`sr lint` will lint you app code using tslint.
 
 ## Options
 <details>

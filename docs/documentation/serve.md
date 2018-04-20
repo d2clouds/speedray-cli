@@ -1,9 +1,9 @@
 <!-- Links in /docs/documentation should NOT have `.md` at the end, because they end up in our wiki at release. -->
 
-# ng serve
+# sr serve
 
 ## Overview
-`ng serve` builds the application and starts a web server.
+`sr serve` builds the application and starts a web server.
 
 All the build Options are available in serve, below are the additional options.
 
@@ -313,4 +313,4 @@ All the build Options are available in serve, below are the additional options.
 
 
 ## Note
-When running `ng serve`, the compiled output is served from memory, not from disk. This means that the application being served is not located on disk in the `dist` folder.
+When running `sr serve`, the compiled output is served from memory, not from disk. This means that the application being served is not located on disk in the `dist` folder.

@@ -14,12 +14,12 @@ export default function() {
 
   return npm('run', 'build', '--', '--local', argv.devkit ? '--devkit=' + argv.devkit : undefined)
     .then(() => {
-      if (!argv.nightly && !argv['ng-sha']) {
+      if (!argv.nightly && !argv['sr-sha']) {
         return;
       }
 
       console.log('Updating package.json from dist for nightly Angular packages...');
-      const label = argv['ng-sha'] ? `#2.0.0-${argv['ng-sha']}` : '';
+      const label = argv['sr-sha'] ? `#2.0.0-${argv['sr-sha']}` : '';
 
       return Promise.all(Object.keys(packages).map(pkgName => {
         return updateJsonFile(join(packages[pkgName].dist, 'package.json'), json => {

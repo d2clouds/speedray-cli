@@ -6,4 +6,4 @@
 process.title = 'sr';
 
 require('../lib/bootstrap-local');
-require('../packages/@speedray/cli/bin/ng');
+require('../packages/@speedray/cli/bin/sr');

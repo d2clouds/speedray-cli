@@ -495,7 +495,7 @@ let Command = CoreObject.extend({
       // ignore 'argv', 'h', and 'help'
       if (!commandOptions.hasOwnProperty(key) && key !== 'argv' && key !== 'h' && key !== 'help' && showErrors) {
         this.ui.writeLine(chalk.yellow(`The option '--${key}' is not registered with the ${this.name} command. ` +
-          `Run \`ng ${this.name} --help\` for a list of supported options.`));
+          `Run \`sr ${this.name} --help\` for a list of supported options.`));
       }
       if (typeof parsedOptions[key] !== 'object') {
         commandOptions[camelize(key)] = parsedOptions[key];
@@ -539,7 +539,7 @@ let Command = CoreObject.extend({
   /**
     Prints short help for the command.
     Short help looks like this:
-        ng generate <blueprint> <options...>
+        sr generate <blueprint> <options...>
           Generates new code from blueprints
           aliases: g
     The default implementation is designed to cover all bases
@@ -547,12 +547,12 @@ let Command = CoreObject.extend({
     @method printShortHelp
   */
   printShortHelp() {
-    // ng command-name
+    // sr command-name
     let output;
     if (this.isRoot) {
       output = `Usage: ${this.name}`;
     } else {
-      output = `ng ${this.name}`;
+      output = `sr ${this.name}`;
     }
 
     output += EOL;
@@ -565,7 +565,7 @@ let Command = CoreObject.extend({
   /**
     Prints basic help for the command.
     Basic help looks like this:
-        ng generate <blueprint> <options...>
+        sr generate <blueprint> <options...>
           Generates new code from blueprints
           aliases: g
           --dry-run (Default: false)
@@ -575,12 +575,12 @@ let Command = CoreObject.extend({
     @method printBasicHelp
   */
   printBasicHelp() {
-    // ng command-name
+    // sr command-name
     let output;
     if (this.isRoot) {
       output = `Usage: ${this.name}`;
     } else {
-      output = `ng ${this.name}`;
+      output = `sr ${this.name}`;
     }
 
     output += this._printCommand();

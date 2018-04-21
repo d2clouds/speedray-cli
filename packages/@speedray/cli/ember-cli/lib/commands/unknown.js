@@ -13,6 +13,6 @@ module.exports = Command.extend({
   },
 
   validateAndRun() {
-    throw new SilentError(`The specified command ${this.name} is invalid. For available options, see \`ng help\`.`);
+    throw new SilentError(`The specified command ${this.name} is invalid. For available options, see \`sr help\`.`);
   },
 });

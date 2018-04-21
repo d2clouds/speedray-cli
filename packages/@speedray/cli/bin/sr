@@ -5,11 +5,11 @@
 // Due to an obscure Mac bug, do not start this title with any symbol.
 process.title = 'sr';
 
-const CliConfig = require('../models/config').CliConfig;
-const Version = require('../upgrade/version').Version;
+const CliConfig = require('@angular/cli/models/config').CliConfig;
+const Version = require('@angular/cli/upgrade/version').Version;
 
 const fs = require('fs');
-const findUp = require('../utilities/find-up').findUp;
+const findUp = require('@angular/cli/utilities/find-up').findUp;
 const packageJson = require('../package.json');
 const path = require('path');
 const resolve = require('resolve');
@@ -107,10 +107,10 @@ resolve('@speedray/cli', { basedir: process.cwd() },
   function (error, projectLocalCli) {
     var cli;
     if (error) {
-      // If there is an error, resolve could not find the ng-cli
+      // If there is an error, resolve could not find the sr-cli
       // library from a package.json. Instead, include it from a relative
       // path to this script file (which is likely a globally installed
-      // npm package). Most common cause for hitting this is `ng new`
+      // npm package). Most common cause for hitting this is `sr new`
       cli = require('../lib/cli');
     } else {
       // Verify that package's version.

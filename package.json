@@ -5,7 +5,7 @@
   "main": "packages/@speedray/cli/lib/cli/index.js",
   "trackingCode": "UA-35681162-1",
   "bin": {
-    "ng": "./bin/sr"
+    "sr": "./bin/sr"
   },
   "keywords": [],
   "scripts": {

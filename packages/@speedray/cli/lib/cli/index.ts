@@ -21,7 +21,7 @@ function loadCommands() {
     'destroy': require('@angular/cli/commands/destroy').default,
     'test': require('@angular/cli/commands/test').default,
     'e2e': require('@angular/cli/commands/e2e').default,
-    'help': require('@angular/cli/commands/help').default,
+    'help': require('../../commands/help').default,
     'lint': require('@angular/cli/commands/lint').default,
     'version': require('@angular/cli/commands/version').default,
     'completion': require('@angular/cli/commands/completion').default,
@@ -44,7 +44,7 @@ export default function(options: any) {
   UI.prototype.writeWarnLine = function () { };
 
   options.cli = {
-    name: 'ng',
+    name: 'sr',
     root: path.join(__dirname, '..', '..'),
     npmPackage: '@speedray/cli'
   };

@@ -1,0 +1,21 @@
+{
+  "name": "@speedray/schematics",
+  "version": "0.5.7",
+  "description": "Schematics specific to Speedray",
+  "keywords": [
+    "blueprints",
+    "code generation",
+    "schematics",
+    "Speedray",
+    "Liferay",
+    "DXP"
+  ],
+  "schematics": "./collection.json",
+  "dependencies": {
+    "typescript": "~2.6.2"
+  },
+  "peerDependencies": {
+    "@angular-devkit/core": "0.5.7",
+    "@angular-devkit/schematics": "0.5.7"
+  }
+}

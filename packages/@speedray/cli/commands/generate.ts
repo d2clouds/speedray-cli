@@ -226,7 +226,7 @@ export default Command.extend({
       })
       .then((output: string[]) => {
         return [
-          cyan(`ng generate ${schematicName} ${cyan('[name]')} ${cyan('<options...>')}`),
+          cyan(`sr generate ${schematicName} ${cyan('[name]')} ${cyan('<options...>')}`),
           ...output
         ].join('\n');
       });

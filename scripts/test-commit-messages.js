@@ -62,7 +62,7 @@ const someCommitsInvalid = !commitsByLine.every(message => validateCommitMessage
 if (someCommitsInvalid) {
   logger.error('Please fix the failing commit messages before continuing...');
   logger.fatal(
-    'Commit message guidelines: https://github.com/angular/angular-cli/blob/master/CONTRIBUTING.md#commit');
+    'Commit message guidelines: https://github.com/d2clouds/speedray-cli/blob/master/CONTRIBUTING.md#commit');
 } else {
   logger.info('All commit messages are valid.');
 }

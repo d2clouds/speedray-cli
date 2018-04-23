@@ -45,7 +45,7 @@ module.exports = function(commitSubject) {
   }
 
   const scope = match[3];
-  const allScopes = Object.keys(packages).concat(Object.keys(tools));
+  const allScopes = Object.keys(packages).concat(Object.keys(tools)).concat(['@angular/cli', '@ngtools/webpack']);
 
   if (scope && !allScopes.includes(scope)) {
     error(`"${scope}" is not an allowed scope.\n => SCOPES: ${allScopes.join(', ')}`,

@@ -29,7 +29,7 @@
       "node"
     ],
     "paths": {
-      "@speedray/schematics": [ "./packages/@speedray/schematics/index" ],
+      "@speedray/schematics": [ "./packages/@speedray/schematics/index" ]
     }
   },
   "exclude": [
